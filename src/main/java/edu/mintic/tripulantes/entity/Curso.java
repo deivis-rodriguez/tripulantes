@@ -1,10 +1,11 @@
 package edu.mintic.tripulantes.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,17 +15,17 @@ public class Curso {
     private @Id @GeneratedValue int idCurso;
     private String nombreCurso;
     private String descripcion;
-    @ManyToOne
-    @JoinColumn(name = "id_tripulante")
-    private Tripulante tripulante;
+
+    @OneToMany(mappedBy = "curso")
+    private List<RegistroCursos> tripulantes;
     
     public Curso() {
     }
 
-    public Curso(String nombreCurso, String descripcion, Tripulante tripulante) {
+    public Curso(String nombreCurso, String descripcion, List<RegistroCursos> tripulantes) {
         this.nombreCurso = nombreCurso;
         this.descripcion = descripcion;
-        this.tripulante = tripulante;
+        this.tripulantes = tripulantes;
     }
 
     public int getIdCurso() {
@@ -50,18 +51,19 @@ public class Curso {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
+    public List<RegistroCursos> getTripulantes() {
+        return tripulantes;
+    }
+
+    public void setTripulante(List<RegistroCursos> tripulantes) {
+        this.tripulantes = tripulantes;
+    }
 
     @Override
     public String toString() {
-        return "Curso [idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion + "]";
-    }
-
-    public Tripulante getTripulante() {
-        return tripulante;
-    }
-
-    public void setTripulante(Tripulante tripulante) {
-        this.tripulante = tripulante;
+        return "Curso [idCurso=" + idCurso + ", nombreCurso=" + nombreCurso + ", descripcion=" + descripcion
+                + ", tripulantes=" + tripulantes + "]";
     }
 
     

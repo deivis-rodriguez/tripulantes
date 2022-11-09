@@ -1,5 +1,7 @@
 package edu.mintic.tripulantes.services.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import edu.mintic.tripulantes.entity.Curso;
@@ -28,6 +30,11 @@ public class CursoServiceImpl implements ICursoService {
     @Override
     public Curso buscarPorNombre(String nombre) {
         return repository.findByNombreCurso(nombre).orElseThrow();
+    }
+
+    @Override
+    public List<Curso> getCursos() {
+        return repository.findAll();
     }
     
 }

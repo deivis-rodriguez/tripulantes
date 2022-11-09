@@ -16,12 +16,12 @@ public class Tripulante {
     //@Column(name = "columna_nombre_tripulante")
     private String nombre;
     @OneToMany(mappedBy = "tripulante")
-    private List<Curso> cursos;
+    private List<RegistroCursos> cursos;
 
     public Tripulante() {
     }
 
-    public Tripulante(String nombre, List<Curso> curso) {
+    public Tripulante(String nombre, List<RegistroCursos> curso) {
         this.nombre = nombre;
         this.cursos = curso;
     }
@@ -30,7 +30,7 @@ public class Tripulante {
         return this.nombre;
     }
 
-    public List<Curso> getCursos() {
+    public List<RegistroCursos> getCursos() {
         return this.cursos;
     }
 
@@ -46,7 +46,7 @@ public class Tripulante {
         this.nombre = nombre;
     }
 
-    public void setCursos(List<Curso> cursos) {
+    public void setCursos(List<RegistroCursos> cursos) {
         this.cursos = cursos;
     }
 

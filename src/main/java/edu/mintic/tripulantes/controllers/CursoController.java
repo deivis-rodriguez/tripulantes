@@ -1,5 +1,7 @@
 package edu.mintic.tripulantes.controllers;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,11 @@ public class CursoController {
 
     public CursoController(CursoServiceImpl cursoService) {
         this.cursoService = cursoService;
+    }
+
+    @GetMapping("/cursos")
+    public List<Curso> getCursos(){
+        return cursoService.getCursos();
     }
 
     @GetMapping("/cursos/{idCurso}")

@@ -38,7 +38,6 @@ public class TripulanteController {
     @PostMapping("/tripulantes")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Tripulante crearTripulante(@RequestBody Tripulante tripulante) {
-        
         return repository.save(tripulante);
     }
 
